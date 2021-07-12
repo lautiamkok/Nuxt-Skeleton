@@ -14,19 +14,23 @@
 export default ({ app, store }, inject) => {
   inject('divide', (x, y) => x / y)
 
-  // Plugins here are useful when the code only can be executed on the client
-  // side, like web storage (localStorage and sessionStorage), alert and so
-  // son.
+  // Code here are useful when they only can be executed on the client side,
+  // like web storage (localStorage and sessionStorage), alert and so on.
 
   // You will get this alert when loading the app and refreshing browsers.
   // window.alert('I work only on client side')
 
   // If you have set any data in the web storage, you can retrieve them when
-  // loading the app and refreshing browsers.
-  console.log(sessionStorage.getItem('something'))
+  // loading the app and refreshing browsers, for example:
+  const layout = sessionStorage.getItem('something')
 
   // If you use store, then you can pass the web storage data to the state of
   // the store.
   // store.dispatch('fetchLayout')
-  store.commit('setLayout', 'dark')
+  // store.commit('setLayout', 'dark')
+  if (layout === null) {
+    store.dispatch('fetchLayout')
+  } else {
+    store.commit('setLayout', layout)
+  }
 }
