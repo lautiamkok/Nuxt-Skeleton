@@ -104,6 +104,20 @@ For more on Windi CSS, check out https://windicss.org/guide/ to get started.
         <img :src="thumbnail">
         ```
 
+        Or, use the method directly in the `<template>` block without having to set the data property in the `<script>` block - only when this method is installed in the local `methods` property:
+
+        ```
+        import { getAsset } from '@/modules/utils'
+        ...
+        methods: {
+          getAsset (file) {
+            return getAsset(file)
+          }
+        },
+
+        <img :src="getAsset(data.thumbnail)">
+        ```
+
         It is recommended to import global methods explicitly where they are required only rather than making them globally everywhere.
 
 2. Use the `/static/` folder for images that you do NOT want to be processed. Then in your `<script>` and `<template>` blocks, use one of the following global methods to request your images, for example:
@@ -125,7 +139,7 @@ For more on Windi CSS, check out https://windicss.org/guide/ to get started.
         <img :src="static">
         ```
 
-    3. Using the `getStatic` method (module):
+    2. Using the `getStatic` method (module):
     
         ```
         // script
@@ -141,6 +155,20 @@ For more on Windi CSS, check out https://windicss.org/guide/ to get started.
 
         // template
         <img :src="static">
+        ```
+
+        Or, use the method directly in the `<template>` block without having to set the data property in the `<script>` block - only when this method is installed in the local `methods` property:
+
+        ```
+        import { getStatic } from '@/modules/utils'
+        ...
+        methods: {
+          getStatic (file) {
+            return getStatic(file)
+          }
+        },
+
+        <img :src="getStatic(data.static)">
         ```
 
         It is recommended to import global methods explicitly where they are required only rather than making them globally everywhere.
