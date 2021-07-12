@@ -81,10 +81,10 @@ export default {
   // available on the client side.
   // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-env#the-env-property
   env: {
-    // Set base url.
+    // Set base URL, if it is not set in the .env file, then fallback.
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
 
-    // Set remote URL for axios.
+    // Set remote API base URL, if it is not set in the .env file, then fallback.
     remoteApiBaseUrl: process.env.REMOTE_API_BASE_URL || 'http://localhost:3004'
   },
 

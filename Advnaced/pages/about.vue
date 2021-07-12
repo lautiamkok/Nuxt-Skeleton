@@ -50,7 +50,7 @@ export default {
   // `this` is not ready in asyncData, will never be.
   async asyncData ({ route, error, $getAsset, $delay }) {
     try {
-      // await $delay(3000)
+      await $delay(3000)
       let { data } = await axios.get(route.path)
       return {
         data,

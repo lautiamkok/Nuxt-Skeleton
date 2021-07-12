@@ -2,25 +2,11 @@
 
 // Create custom Nuxt utils that can be used both on the server side and client side.
 
-function getAsset (file) {
-  if (!file) {
-    return
-  }
-  return require('~/assets/images/' + file)
-}
-
-function getStatic (file) {
-  if (!file) {
-    return
-  }
-  return '/' + file
-}
-
-async function delay (ms) {
-  return new Promise(res => {
-    setTimeout(res, ms)
-  })
-}
+import {
+  delay,
+  getAsset,
+  getStatic
+} from '@/modules/utils'
 
 // Inject in $root & context
 export default (ctx, inject) => {

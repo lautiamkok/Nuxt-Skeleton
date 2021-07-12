@@ -14,7 +14,14 @@ function getStatic (file) {
   return '/' + file
 }
 
+async function delay (ms) {
+  return new Promise(res => {
+    setTimeout(res, ms)
+  })
+}
+
 export {
+  delay,
   getAsset,
   getStatic,
 }
