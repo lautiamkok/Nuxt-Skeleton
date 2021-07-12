@@ -29,9 +29,10 @@
 </template>
 
 <script>
-// Modules and functions imported in here only can be used in the <script> block,
-// not in the <template> block. To use these functions in the template block,
-// you must install them in the local (or global) method or filter property.
+// Modules and functions imported in here only can be used in the <script>
+// block, not in the <template> block. To use these functions in the template
+// block, you must install them in the local (or global - mixins) `methods`` or
+// `filters`` property.
 import axios from '@/modules/axios'
 import { getAsset, getStatic } from '@/modules/utils'
 
