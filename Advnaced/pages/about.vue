@@ -31,8 +31,8 @@
 <script>
 // Modules and functions imported in here only can be used in the <script>
 // block, not in the <template> block. To use these functions in the template
-// block, you must install them in the local (or global - mixins) `methods`` or
-// `filters`` property.
+// block, you must install them in the local (or global - mixins) `methods` or
+// `filters` property.
 import axios from '@/modules/axios'
 import { getAsset, getStatic } from '@/modules/utils'
 
@@ -50,7 +50,7 @@ export default {
   // `this` is not ready in asyncData, will never be.
   async asyncData ({ route, error, $getAsset, $delay }) {
     try {
-      await $delay(3000)
+      // await $delay(3000)
       let { data } = await axios.get(route.path)
       return {
         data,
@@ -130,10 +130,6 @@ export default {
     getStatic (file) {
       return getStatic(file)
     }
-  },
-
-  mounted () {
-    this.hello('kok')
   }
 }
 </script>

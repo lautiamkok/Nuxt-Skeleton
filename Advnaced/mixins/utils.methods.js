@@ -6,7 +6,7 @@
 // export default {
 //   methods: {
 //     hello (name) {
-//       console.log(`hello, ${name}`)
+//       return `hello, ${name}`
 //     }
 //   }
 // }
@@ -16,8 +16,7 @@ import Vue from 'vue'
 Vue.mixin({
   methods: {
     hello (name) {
-      console.log(`hello, ${name}`)
+      return `hello, ${name}`
     }
   }
 })
-

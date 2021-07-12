@@ -44,15 +44,15 @@ export default {
 
     // Sample plugins with the mode property.
     {
-      src: '~/plugins/hello-client-only.js',
+      src: '~/plugins/client-only.js',
       mode: 'client'
     },
     {
-      src: '~/plugins/hello-server-only.js',
+      src: '~/plugins/server-only.js',
       mode: 'server'
     },
     {
-      src: '~/plugins/hello-server-client.js',
+      src: '~/plugins/server-client.js',
     },
 
     // Sample mixins
