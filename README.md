@@ -118,7 +118,7 @@ For more on Windi CSS, check out https://windicss.org/guide/ to get started.
         <img :src="getAsset(data.thumbnail)">
         ```
 
-        It is recommended to import global methods explicitly where they are required only rather than making them globally everywhere.
+        It is recommended to import global methods explicitly where they are required only rather than making them global everywhere.
 
 2. Use the `/static/` folder for images that you do NOT want to be processed. Then in your `<script>` and `<template>` blocks, use one of the following global methods to request your images, for example:
 
@@ -171,4 +171,4 @@ For more on Windi CSS, check out https://windicss.org/guide/ to get started.
         <img :src="getStatic(data.static)">
         ```
 
-        It is recommended to import global methods explicitly where they are required only rather than making them globally everywhere.
+        It is recommended to import global methods explicitly where they are required only rather than making them global everywhere.
