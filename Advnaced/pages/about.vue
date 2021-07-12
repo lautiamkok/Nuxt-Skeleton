@@ -6,7 +6,9 @@
     <img :src="thumbnail">
     <img :src="static">
 
-    <img :src="$getAsset(data.thumbnail)" v-if="data.thumbnail">
+    <img :src="$getAsset(data.thumbnail)">
+    <img :src="getAsset(data.thumbnail)">
+    <img :src="getStatic(data.static)">
 
     <div class="box">
       <div class="text-center space-y-2">
@@ -28,22 +30,32 @@
 
 <script>
 // Modules and functions imported in here only can be used in the <script> block,
-// not in the <template> block. Unlike vanilla Vue apps.
+// not in the <template> block. To use these functions in the template block,
+// you must install them in the local (or global) method or filter property.
 import axios from '@/modules/axios'
 import { getAsset, getStatic } from '@/modules/utils'
 
 export default {
   name: 'about',
 
-  async asyncData ({ route, error, $getAsset }) {
-    try {
-      // Using a custom axios module.
-      let { data } = await axios.get(route.path)
+  // The fetch hook runs on the server side once then the client side afterwards.
+  // `this` is already ready in the fetch hook.
+  // https://nuxtjs.org/docs/2.x/components-glossary/pages-fetch
+  async fetch () {
+    this.hello('kok')
+  },
 
+  // The asyncData hook runs on the server side once then the client side afterwards.
+  // `this` is not ready in asyncData, will never be.
+  async asyncData ({ route, error, $getAsset, $delay }) {
+    try {
+      // await $delay(3000)
+      let { data } = await axios.get(route.path)
       return {
         data,
-        static: getStatic(data.static),
-        thumbnail: $getAsset(data.thumbnail)
+        static: getStatic(data.static), // a vanilla module plugin
+        // thumbnail: $getAsset(data.thumbnail) // a Nuxt plugin
+        thumbnail: getAsset(data.thumbnail) // a vanilla module plugin
       }
     } catch (err) {
       // Handle err
@@ -105,6 +117,23 @@ export default {
     // }
     return layout
   },
+
+  methods: {
+    // If the module function is not installed here, you will get the following error:
+    // _vm.getAsset is not a function
+    // https://stackoverflow.com/a/52333022/413225
+    getAsset (file) {
+      return getAsset(file)
+    },
+
+    getStatic (file) {
+      return getStatic(file)
+    }
+  },
+
+  mounted () {
+    this.hello('kok')
+  }
 }
 </script>
 

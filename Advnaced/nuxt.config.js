@@ -32,11 +32,17 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // Vue util plugins - run on both client and server sides.
     {
-      src: '~/plugins/utils.js'
+      src: '~/plugins/utils.nuxt.js'
     },
 
-    // Samples
+    // Vue util plugins - always client only whether you set the mode property or not.
+    {
+      src: '~/plugins/utils.vue.js'
+    },
+
+    // Sample plugins with the mode property.
     {
       src: '~/plugins/hello-client-only.js',
       mode: 'client'
@@ -47,6 +53,11 @@ export default {
     },
     {
       src: '~/plugins/hello-server-client.js',
+    },
+
+    // Sample mixins
+    {
+      src: '~/mixins/utils.methods.js',
     }
   ],
 
