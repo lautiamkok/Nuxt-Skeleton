@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ this.$store.state }}
     <nav>
       <ul>
         <li>
