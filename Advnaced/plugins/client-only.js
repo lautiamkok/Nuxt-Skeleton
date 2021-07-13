@@ -22,7 +22,7 @@ export default ({ app, store }, inject) => {
 
   // If you have set any data in the web storage, you can retrieve them when
   // loading the app and refreshing browsers, for example:
-  const layout = sessionStorage.getItem('something')
+  const layout = sessionStorage.getItem('layout')
 
   // If you use store, then you can pass the web storage data to the state of
   // the store.
