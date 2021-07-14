@@ -92,5 +92,9 @@ export default {
     // The layout middleware must be registered globally so that it can be
     // executed before the layout property in the component.
     middleware: ['layout']
+  },
+
+  static: {
+    prefix: true
   }
 }
