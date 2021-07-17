@@ -1,8 +1,8 @@
 'use strict'
 
 export default {
-  seCart (state, data) {
-    state.cart = data
+  updateCart (state, data) {
+    state.cart.push(data)
   },
 
   setLayout (state, data) {

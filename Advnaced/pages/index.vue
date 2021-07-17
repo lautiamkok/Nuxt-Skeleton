@@ -17,17 +17,13 @@
 </template>
 
 <script>
-import axios from '~/modules/axios'
+import axios from '@/modules/axios'
+import localforage from 'localforage'
+
 export default {
   name: 'home',
 
-  data () {
-    return {
-      data: {}
-    }
-  },
-
-  async created () {
+  async asyncData () {
     // Vanilla fetch API.
     // let res = await fetch('http://localhost:3004/home')
     // this.data = await res.json()
@@ -38,7 +34,23 @@ export default {
 
     // Using a custom axios.
     let { data } = await axios.get('/home')
-    this.data = data
+    return { data }
+  },
+
+  async mounted () {
+    // Accesss the "cart" localstorage.
+    // If null then set the cart.
+    let cart = await localforage.getItem('cart')
+    if (cart === null) {
+      cart = await localforage.setItem('cart', [])
+    }
+
+    // // If not null and not empty then set it to data.
+    // if (cart !== null && cart.length > 0) {
+    //   this.cart = cart
+    // }
+
+    this.$store.dispatch('addProduct', { id: 1, name: 'xyy', quanity: 1 })
   }
 }
 </script>
