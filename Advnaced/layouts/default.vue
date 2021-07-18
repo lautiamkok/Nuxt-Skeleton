@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ this.$store.state }}
+    {{ $store.state }}
     <nav>
       <ul>
         <li>

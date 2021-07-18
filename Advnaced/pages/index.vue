@@ -3,8 +3,8 @@
     <h1>{{ data.title }}</h1>
     <p class="text-red">{{ data.content }}</p>
 
-    <AddProduct
-      v-slot="{ addProduct }"
+    <cart-add-item
+      v-slot="{ add }"
       v-bind:id="'1'"
       v-bind:title="'xyz'"
       v-bind:url="'/xyz'"
@@ -17,10 +17,10 @@
           hover:rounded-2xl
           dark:(from-teal-400 to-yellow-500)
         "
-        v-on:click.prevent="addProduct"
+        v-on:click.prevent="add"
       >Add</button>
 
-    </AddProduct>
+    </cart-add-item>
 
     <button
       class="
@@ -32,6 +32,26 @@
       "
       v-on:click.prevent="emptyCart"
     >Clear</button>
+
+    <client-only>
+      <div
+        v-for="( item, index ) in $store.state.cart.items"
+      >
+        <h3 class="font-600">
+          <a
+            :href="item.url"
+            v-html="item.title"
+          ></a>
+        </h3>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="1000"
+          v-model="item.quantity"
+        >
+      </div>
+    </client-only>
 
     <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
     <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
@@ -60,7 +80,7 @@ export default {
 
   methods: {
     emptyCart () {
-      this.$store.dispatch('emptyCart')
+      this.$store.dispatch('cart/empty')
     }
   }
 }

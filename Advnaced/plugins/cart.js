@@ -14,6 +14,6 @@ export default async ({ store }) => {
 
   // If not null and not empty then set it to data.
   if (cart !== null && cart.length > 0) {
-    store.dispatch('populateCart', cart)
+    store.dispatch('cart/populate', cart)
   }
 }

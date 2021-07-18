@@ -1,7 +1,7 @@
 <template>
   <div>
     <slot
-      v-bind:addProduct="addProduct"
+      v-bind:deleteItem="deleteItem"
     >
     </slot>
   </div>
@@ -28,7 +28,7 @@ export default {
 
   data () {
     return {
-      product: {
+      item: {
         id: '',
         title: '',
         url: '',
@@ -38,12 +38,12 @@ export default {
   },
 
   methods: {
-    addProduct (event) {
-      this.product.id = this.id
-      this.product.title = this.title
-      this.product.url = this.url
+    delete (event) {
+      this.item.id = this.id
+      this.item.title = this.title
+      this.item.url = this.url
 
-      this.$store.dispatch('addProduct', this.product)
+      this.$store.dispatch('deleteItem', this.item)
     }
   }
 }
