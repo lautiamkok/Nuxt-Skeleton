@@ -1,7 +1,9 @@
 <template>
   <div>
     <slot
-      v-bind:updateItems="updateItems"
+      v-bind:items="items"
+      v-bind:update="update"
+      v-bind:updateItemQuantity="updateItemQuantity"
     >
     </slot>
   </div>
@@ -9,41 +11,25 @@
 
 <script>
 export default {
-  props: {
-    id: {
-      type: String,
-      default: ''
-    },
-
-    title: {
-      type: String,
-      default: ''
-    },
-
-    url: {
-      type: String,
-      default: ''
-    },
-  },
-
-  data () {
-    return {
-      item: {
-        id: '',
-        title: '',
-        url: '',
-        quantity: 1
-      }
+  computed: {
+    items () {
+      return this.$store.state.cart.items
     }
   },
 
   methods: {
     update (event) {
-      this.item.id = this.id
-      this.item.title = this.title
-      this.item.url = this.url
+      this.$store.dispatch('cart/update', this.items)
+    },
 
-      this.$store.dispatch('updateItems', this.item)
+    updateItemQuantity (event) {
+      const button = event.target
+      const dataset = button.dataset
+
+      this.$store.dispatch('cart/updateItemQuantity', {
+        id: dataset.id,
+        quantity: event.target.value
+      })
     }
   }
 }

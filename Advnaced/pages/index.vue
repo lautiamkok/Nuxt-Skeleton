@@ -18,7 +18,26 @@
           dark:(from-teal-400 to-yellow-500)
         "
         v-on:click.prevent="add"
-      >Add</button>
+      >Add 1</button>
+
+    </cart-add-item>
+
+    <cart-add-item
+      v-slot="{ add }"
+      v-bind:id="'2'"
+      v-bind:title="'abc'"
+      v-bind:url="'/abc'"
+    >
+      <button
+        class="
+          bg-gradient-to-r from-green-400 to-blue-500
+          m-4 px-4 py-3 text-white text-center italic rounded cursor-default
+          transition-all duration-400
+          hover:rounded-2xl
+          dark:(from-teal-400 to-yellow-500)
+        "
+        v-on:click.prevent="add"
+      >Add 2</button>
 
     </cart-add-item>
 
@@ -34,23 +53,37 @@
     >Clear</button>
 
     <client-only>
-      <div
-        v-for="( item, index ) in $store.state.cart.items"
+      <cart-update-items
+        v-slot="{ update, updateItemQuantity, items }"
       >
-        <h3 class="font-600">
-          <a
-            :href="item.url"
-            v-html="item.title"
-          ></a>
-        </h3>
-        <input
-          type="number"
-          name="quantity"
-          min="1"
-          max="1000"
-          v-model="item.quantity"
+        <div
+          v-for="( item, index ) in items"
+          v-bind:key="item.timestamp"
         >
-      </div>
+          <h3 class="font-600">
+            <a
+              v-bind:href="item.url"
+              v-html="item.title"
+            ></a>
+          </h3>
+
+          <input
+            type="number"
+            name="quantity"
+            min="1"
+            max="1000"
+            v-bind:value="item.quantity"
+            v-on:input="updateItemQuantity"
+            v-bind:data-id="item.id"
+          >
+        </div>
+
+        <button
+          v-on:click.prevent="update"
+        >Update Cart</button>
+
+      </cart-update-items>
+
     </client-only>
 
     <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
@@ -76,12 +109,6 @@ export default {
     // Using a custom axios.
     let { data } = await axios.get('/home')
     return { data }
-  },
-
-  methods: {
-    emptyCart () {
-      this.$store.dispatch('cart/empty')
-    }
   }
 }
 </script>

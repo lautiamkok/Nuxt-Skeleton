@@ -20,6 +20,13 @@ export default {
   },
 
   async update ({ state, commit, rootState }, items) {
+    // Remove items where quantity is 0.
+    // https://lodash.com/docs/4.17.15#remove
+    // https://www.codegrepper.com/code-examples/javascript/lodash+remove+element+from+list
+    _.remove(items, item => Number(item.quantity) === 0)
+
+    // Reset before update.
+    commit('setItems', [])
     commit('setItems', items)
 
     // Reset the items in the localstorage.
@@ -46,5 +53,9 @@ export default {
     if (state.items.length > 0) {
       await localforage.setItem('cart', uniq)
     }
+  },
+
+  updateItemQuantity ({ state, commit, rootState }, item) {
+    commit('setItemQuantity', item)
   }
 }

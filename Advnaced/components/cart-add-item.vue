@@ -32,6 +32,7 @@ export default {
         id: '',
         title: '',
         url: '',
+        timestamp: '',
         quantity: 1
       }
     }
@@ -42,6 +43,8 @@ export default {
       this.item.id = this.id
       this.item.title = this.title
       this.item.url = this.url
+      this.item.quantity = 1
+      this.item.timestamp = Date.now()
 
       this.$store.dispatch('cart/addItem', this.item)
     }
