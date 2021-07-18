@@ -1,5 +1,7 @@
 'use strict'
 
+// https://vuex.vuejs.org/guide/actions.html#dispatching-actions
+
 // Local database.
 // https://www.npmjs.com/package/localforage
 import localforage from 'localforage'
@@ -11,10 +13,17 @@ export default {
     commit('setLayout', data)
   },
 
+  async emptyCart ({ state, commit, rootState }, cart) {
+    commit('setCart', [])
+    await localforage.setItem('cart', [])
+  },
+
+  async populateCart ({ state, commit, rootState }, cart) {
+    commit('setCart', cart)
+  },
+
   async addProduct ({ state, commit, rootState }, product) {
-    console.log('product =', product)
     let cart = await localforage.getItem('cart')
-    console.log('cart =', cart)
 
     // Don't push the item if it exists already.
     // Find the match using meta because the quantity can change.
@@ -25,6 +34,15 @@ export default {
       return
     }
 
-    commit('updateCart', product)
+    commit('setProduct', product)
+
+    console.log('state.cart.length =', state.cart.length)
+
+    // Make sure that only uniq items are updated to the localstorage cart.
+    // https://lodash.com/docs/4.17.15#uniqWith
+    const uniq = _.uniqWith(state.cart, _.isEqual)
+    if (state.cart.length > 0) {
+      await localforage.setItem('cart', uniq)
+    }
   }
 }

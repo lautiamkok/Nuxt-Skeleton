@@ -58,7 +58,13 @@ export default {
     // Sample mixins
     {
       src: '~/mixins/utils.methods.js',
-    }
+    },
+
+    // Client only plugins
+    {
+      src: '~/plugins/cart.js',
+      mode: 'client'
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

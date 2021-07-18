@@ -3,13 +3,35 @@
     <h1>{{ data.title }}</h1>
     <p class="text-red">{{ data.content }}</p>
 
-    <button class="
-      bg-gradient-to-r from-green-400 to-blue-500
-      m-4 px-4 py-3 text-white text-center italic rounded cursor-default
-      transition-all duration-400
-      hover:rounded-2xl
-      dark:(from-teal-400 to-yellow-500)
-    ">Preview</button>
+    <AddProduct
+      v-slot="{ addProduct }"
+      v-bind:id="'1'"
+      v-bind:title="'xyz'"
+      v-bind:url="'/xyz'"
+    >
+      <button
+        class="
+          bg-gradient-to-r from-green-400 to-blue-500
+          m-4 px-4 py-3 text-white text-center italic rounded cursor-default
+          transition-all duration-400
+          hover:rounded-2xl
+          dark:(from-teal-400 to-yellow-500)
+        "
+        v-on:click.prevent="addProduct"
+      >Add</button>
+
+    </AddProduct>
+
+    <button
+      class="
+        bg-gradient-to-r from-green-400 to-blue-500
+        m-4 px-4 py-3 text-white text-center italic rounded cursor-default
+        transition-all duration-400
+        hover:rounded-2xl
+        dark:(from-teal-400 to-yellow-500)
+      "
+      v-on:click.prevent="emptyCart"
+    >Clear</button>
 
     <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
     <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
@@ -18,7 +40,6 @@
 
 <script>
 import axios from '@/modules/axios'
-import localforage from 'localforage'
 
 export default {
   name: 'home',
@@ -37,20 +58,10 @@ export default {
     return { data }
   },
 
-  async mounted () {
-    // Accesss the "cart" localstorage.
-    // If null then set the cart.
-    let cart = await localforage.getItem('cart')
-    if (cart === null) {
-      cart = await localforage.setItem('cart', [])
+  methods: {
+    emptyCart () {
+      this.$store.dispatch('emptyCart')
     }
-
-    // // If not null and not empty then set it to data.
-    // if (cart !== null && cart.length > 0) {
-    //   this.cart = cart
-    // }
-
-    this.$store.dispatch('addProduct', { id: 1, name: 'xyy', quanity: 1 })
   }
 }
 </script>

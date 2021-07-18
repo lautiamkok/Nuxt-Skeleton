@@ -1,8 +1,12 @@
 'use strict'
 
 export default {
-  updateCart (state, data) {
-    state.cart.push(data)
+  setCart (state, cart) {
+    state.cart = cart
+  },
+
+  setProduct (state, product) {
+    state.cart.push(product)
   },
 
   setLayout (state, data) {
