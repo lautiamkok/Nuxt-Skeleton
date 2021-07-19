@@ -41,20 +41,11 @@
 
     </cart-add-item>
 
-    <button
-      class="
-        bg-gradient-to-r from-green-400 to-blue-500
-        m-4 px-4 py-3 text-white text-center italic rounded cursor-default
-        transition-all duration-400
-        hover:rounded-2xl
-        dark:(from-teal-400 to-yellow-500)
-      "
-      v-on:click.prevent="emptyCart"
-    >Clear</button>
+
 
     <client-only>
       <cart-update-items
-        v-slot="{ update, updateItemQuantity, items }"
+        v-slot="{ update, empty, updateItemQuantity, deleteItem, items }"
       >
         <div
           v-for="( item, index ) in items"
@@ -76,11 +67,27 @@
             v-on:input="updateItemQuantity"
             v-bind:data-id="item.id"
           >
+
+          <button
+            v-on:click.prevent="deleteItem"
+            v-bind:data-id="item.id"
+          >Delete</button>
         </div>
 
         <button
           v-on:click.prevent="update"
         >Update Cart</button>
+
+        <button
+          class="
+            bg-gradient-to-r from-green-400 to-blue-500
+            m-4 px-4 py-3 text-white text-center italic rounded cursor-default
+            transition-all duration-400
+            hover:rounded-2xl
+            dark:(from-teal-400 to-yellow-500)
+          "
+          v-on:click.prevent="empty"
+        >Empty Cart</button>
 
       </cart-update-items>
 

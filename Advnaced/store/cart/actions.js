@@ -12,7 +12,7 @@ export default {
     commit('setItems', items)
   },
 
-  async empty ({ state, commit, rootState }, items) {
+  async empty ({ state, commit, rootState }) {
     commit('setItems', [])
 
     // Reset the items in the localstorage.
@@ -57,5 +57,12 @@ export default {
 
   updateItemQuantity ({ state, commit, rootState }, item) {
     commit('setItemQuantity', item)
+  },
+
+  async deleteItem ({ state, commit, rootState }, item) {
+    commit('unsetItem', item)
+
+    // Reset the items in the localstorage.
+    await localforage.setItem('cart', state.items)
   }
 }
