@@ -93,8 +93,68 @@
 
     </client-only>
 
-    <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
-    <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
+    <div class="container mx-auto">
+
+      <p>Grid</p>
+
+      <div class="grid grid-cols-3 gap-4 <lg:grid-cols-2 <sm:grid-cols-1">
+        <div>
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div>
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div>
+          <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
+        </div>
+      </div>
+
+      <h2>Flex</h2>
+
+      <h3>Desktop first</h3>
+
+      <div class="flex flex-wrap justify-center items-center w-full px-1.5">
+        <div class="w-1/2 <sm:w-full px-2.5">
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div class="w-1/2 <sm:w-full px-2.5">
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div class="w-1/2 <sm:w-full px-2.5">
+          <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
+        </div>
+      </div>
+
+      <p>Flex: callapse padding on small</p>
+
+      <div class="flex flex-wrap justify-center items-center w-full px-1.5 <sm:px-0">
+        <div class="w-1/2 <sm:(p-0 w-full) px-2.5">
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div class="w-1/2 <sm:(p-0 w-full) px-2.5">
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div class="w-1/2 <sm:(p-0 w-full) px-2.5">
+          <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
+        </div>
+      </div>
+
+      <h3>Mobile first</h3>
+
+      <div class="flex flex-wrap justify-center items-center w-full px-1.5">
+        <div class="w-full sm:w-1/2 px-2.5">
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div class="w-full sm:w-1/2 px-2.5">
+          <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
+        </div>
+        <div class="w-full sm:w-1/2 px-2.5">
+          <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
@@ -119,3 +179,10 @@ export default {
   }
 }
 </script>
+
+<style>
+/*.flex-wrap > div {
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+}*/
+</style>
