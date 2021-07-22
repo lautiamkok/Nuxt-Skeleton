@@ -41,8 +41,6 @@
 
     </cart-add-item>
 
-
-
     <client-only>
       <cart-update-items
         v-slot="{ update, empty, updateItemQuantity, deleteItem, items }"
@@ -95,7 +93,7 @@
 
     <div class="container mx-auto">
 
-      <p>Grid</p>
+      <h2>Grid</h2>
 
       <div class="grid grid-cols-3 gap-4 <lg:grid-cols-2 <sm:grid-cols-1">
         <div>
@@ -114,13 +112,13 @@
       <h3>Desktop first</h3>
 
       <div class="flex flex-wrap justify-center items-center w-full px-1.5">
-        <div class="w-1/2 <sm:w-full px-2.5">
+        <div class="md:w-1/2 sm:w-full <sm:w-full px-2.5">
           <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
         </div>
-        <div class="w-1/2 <sm:w-full px-2.5">
+        <div class="md:w-1/2 sm:w-full <sm:w-full px-2.5">
           <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
         </div>
-        <div class="w-1/2 <sm:w-full px-2.5">
+        <div class="md:w-1/2 sm:w-full <sm:w-full px-2.5">
           <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
         </div>
       </div>
@@ -142,13 +140,13 @@
       <h3>Mobile first</h3>
 
       <div class="flex flex-wrap justify-center items-center w-full px-1.5">
-        <div class="w-full sm:w-1/2 px-2.5">
+        <div class="w-full md:w-1/2 px-2.5">
           <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
         </div>
-        <div class="w-full sm:w-1/2 px-2.5">
+        <div class="w-full md:w-1/2 px-2.5">
           <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
         </div>
-        <div class="w-full sm:w-1/2 px-2.5">
+        <div class="w-full md:w-1/2 px-2.5">
           <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
         </div>
       </div>
