@@ -11,6 +11,9 @@
       </ul>
     </nav>
     <Nuxt />
+
+    <current-breakpoint/>
+
   </div>
 </template>
 
