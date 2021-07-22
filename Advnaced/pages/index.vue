@@ -112,13 +112,13 @@
       <h3>Desktop first</h3>
 
       <div class="flex flex-wrap justify-center items-center w-full px-1.5">
-        <div class="md:w-1/2 sm:w-full <sm:w-full px-2.5">
+        <div class="w-1/2 <md:w-full px-2.5">
           <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
         </div>
-        <div class="md:w-1/2 sm:w-full <sm:w-full px-2.5">
+        <div class="w-1/2 <md:w-full px-2.5">
           <img src="~/assets/images/matheus-bandoch-mkdI8JN6sDU-unsplash.jpg">
         </div>
-        <div class="md:w-1/2 sm:w-full <sm:w-full px-2.5">
+        <div class="w-1/2 <md:w-full px-2.5">
           <img src="/jeremy-bishop-dvACrXUExLs-unsplash.jpg">
         </div>
       </div>
