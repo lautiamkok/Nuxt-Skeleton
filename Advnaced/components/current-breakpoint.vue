@@ -1,5 +1,5 @@
 <template>
-  <div v-if="env === 'development'">
+  <div v-if="dev">
 
     <!-- https://gist.github.com/jonsugar/6bce22bd7d3673294caad36046c2b7cb !-->
     <div class="fixed bottom-0 right-0 py-1.5 px-3 bg-black text-white text-sm">
@@ -16,11 +16,10 @@
 
 <script>
 export default {
-  name: 'breakpoint',
-
   data () {
-    const env = process.env.NODE_ENV
-    return { env }
+    // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-dev
+    const dev = process.dev
+    return { dev }
   }
 }
 </script>
