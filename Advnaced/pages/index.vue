@@ -123,7 +123,7 @@
         </div>
       </div>
 
-      <p>Flex: callapse padding on small</p>
+      <p>Flex: collapse padding on small</p>
 
       <div class="flex flex-wrap justify-center items-center w-full px-1.5 <sm:px-0">
         <div class="w-1/2 <sm:(p-0 w-full) px-2.5">
@@ -177,10 +177,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/*.flex-wrap > div {
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
-}*/
-</style>
